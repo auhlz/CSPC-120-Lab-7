@@ -7,17 +7,17 @@
 // Lab 07-01
 // Partners: @s
 //
-// Date difference
+// Date difference with funcitons
 //
 
 #include <iostream>
 
 int JulianDay(int month, int day, int year) {
-  int julianDay{0};
-  julianDay = day - 32075 + 1461 * (year + 4800 + (month - 14) / 12) / 4 +
-              367 * (month - 2 - (month - 14) / 12 * 12) / 12 -
-              3 * ((year + 4900 + (month - 14) / 12) / 100) / 4;
-  return julianDay;
+  int julian_day{0};
+  julian_day = day - 32075 + 1461 * (year + 4800 + (month - 14) / 12) / 4 +
+               367 * (month - 2 - (month - 14) / 12 * 12) / 12 -
+               3 * ((year + 4900 + (month - 14) / 12) / 100) / 4;
+  return julian_day;
 }
 
 int DateDifference(int start_month, int start_day, int start_year,
@@ -34,7 +34,12 @@ void PrintDate(int month, int day, int year) {
 
 int main(int argc, char* argv[]) {
   std::cout << "Let's find the number of days between two dates...\n";
-  int start_month, start_day, start_year, end_month, end_day, end_year;
+  int start_month{0};
+  int start_day{0};
+  int start_year{0};
+  int end_month{0};
+  int end_day{0};
+  int end_year{0};
   std::cout << "Enter a start month: ";
   std::cin >> start_month;
   std::cout << "Enter a start day: ";
