@@ -5,7 +5,7 @@
 // @auhlz
 //
 // Lab 07-01
-// Partners: @s
+// Partners: @Menuk09
 //
 // Date difference with funcitons
 //
