@@ -1,4 +1,14 @@
-// TODO: add a header
+// Alex Labitigan
+// CPSC 120-12
+// 2022-10-17
+// alexlabitigan@csu.fullerton.edu
+// @auhlz
+//
+// Lab 07-01
+// Partners: @s
+//
+// Blackjack with functions
+//
 
 #include <iostream>
 #include <string>
@@ -6,40 +16,67 @@
 
 // Return true if card_name is the name of the ace card ("A"); or
 // false otherwise.
+// TODO: replace this return statement with one that actually works
+// TODO: write statements to implement this function, and delete this comment
+
 bool IsAce(const std::string& card_name) {
-  // TODO: write statements to implement this function, and delete this comment
-  return false; // TODO: replace this return statement with one that actually works
+  bool ace = false;
+  if (card_name == "A")
+    ace = true;
+  return ace; 
 }
 
 // Return true if card_name is the name of the jack ("J"), queen ("Q"),
 // or king ("K"); or false otherwise.
+// TODO: write statements to implement this function, and delete this comment
+// TODO: replace this return statement with one that actually works
+
 bool IsFaceCard(const std::string& card_name) {
-  // TODO: write statements to implement this function, and delete this comment
-  return false; // TODO: replace this return statement with one that actually works
+  bool face_card = false;
+  if (card_name == "J" || "K" || "Q")
+    face_card = true;
+  return face_card; 
 }
 
 // Return true if card_name is the name of a number card ("2" through "10");
 // or false otherwise.
+// TODO: write statements to implement this function, and delete this comment
+// TODO: replace this return statement with one that actually works
 bool IsNumberCard(const std::string& card_name) {
-  // TODO: write statements to implement this function, and delete this comment
-  return false; // TODO: replace this return statement with one that actually works
+  bool num_card = false;
+  if (card_name == "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "10")
+  num_card = true;
+  return num_card;
 }
 
 // Return true if card_name is any valid card name; or false otherwise.
+// TODO: write statements to implement this function, and delete this comment
+// HINT: call IsAce, IsFaceCard, and IsNumberCard, and combine their return values
+// TODO: replace this return statement with one that actually works
 bool IsCardName(const std::string& str) {
-  // TODO: write statements to implement this function, and delete this comment
-  // HINT: call IsAce, IsFaceCard, and IsNumberCard, and combine their return values
-  return false; // TODO: replace this return statement with one that actually works
+  bool valid = true;
+  bool ace_card = IsAce(str);
+  bool face_card = IsFaceCard(str);
+  bool number_card = IsNumberCard(str);
+  if (ace_card && face_card && number_card == false)
+    valid = false;
+
+  return valid; 
 }
 
 // Return true if every argument (after the command name) is a valid card name;
 // or false otherwise.
 // The first element of arguments contains the command name, and is ignored by
 // this function.
+// TODO: write statements to implement this function, and delete this comment
+// HINT: write a loop, cand call IsCardName in the body of the loop
+// TODO: replace this return statement with one that actually works
+
 bool AllArgumentsValid(const std::vector<std::string>& arguments) {
-  // TODO: write statements to implement this function, and delete this comment
-  // HINT: write a loop, cand call IsCardName in the body of the loop
-  return false; // TODO: replace this return statement with one that actually works
+
+
+
+  return false; 
 }
 
 // Return the number of points that the given card is worth.
