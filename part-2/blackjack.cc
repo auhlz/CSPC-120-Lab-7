@@ -34,7 +34,7 @@ bool IsAce(const std::string& card_name) {
 
 bool IsFaceCard(const std::string& card_name) {
   bool face_card = false;
-  if (card_name == "J" || "K" || "Q"){
+  if (card_name == "J" || card_name == "K" || card_name == "Q"){
     face_card = true;
   }
   return face_card; 
@@ -46,7 +46,8 @@ bool IsFaceCard(const std::string& card_name) {
 // TODO: replace this return statement with one that actually works
 bool IsNumberCard(const std::string& card_name) {
   bool num_card = false;
-  if (card_name == "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "10"){
+  if (card_name == "2" || card_name == "3" || card_name == "4" || card_name == "5" || card_name == "6" ||
+   card_name == "7" || card_name == "8" || card_name == "9" || card_name == "10"){
     num_card = true;
   }
   return num_card;
@@ -57,12 +58,12 @@ bool IsNumberCard(const std::string& card_name) {
 // HINT: call IsAce, IsFaceCard, and IsNumberCard, and combine their return values
 // TODO: replace this return statement with one that actually works
 bool IsCardName(const std::string& str) {
-  bool valid = true;
+  bool valid = false;
   bool ace_card = IsAce(str);
   bool face_card = IsFaceCard(str);
   bool number_card = IsNumberCard(str);
-  if (ace_card || face_card || number_card == true){
-    valid = false;
+  if (ace_card == true || face_card == true || number_card == true){
+    valid = true;
   }
   return valid; 
 }
@@ -160,12 +161,13 @@ bool IsBust(int score) {
 
 int HandScore(const std::vector<std::string>& arguments) {
   int score{0};
+  
   for(int i = 1; i < arguments.size(); i++){
-    CardPoints(arguments[i]);
+    score += CardPoints(arguments[i]);
   }
   if (HandContainsAce(arguments)){
-    if(IsBust(score) != false) {
-      score += 10;
+    if(IsBust(score) == false) {
+      score -= 10;
     }
   }
 
@@ -186,7 +188,7 @@ void PrintScore(int score) {
   if (IsBust(score)){
     std::cout << "Score is " << score << ", BUST\n";
   } else {
-    std::cout << "Score is" << score << "\n";
+    std::cout << "Score is " << score << "\n";
   }
 }
 
@@ -198,15 +200,14 @@ void PrintScore(int score) {
 
   // TODO: calculate the score of the hand, and print out a message
   // HINT: call HandScore, then PrintScore
-  // PrintScore(HandScore(arguments));
+ 
 int main(int argc, char* argv[]) {
   std::vector<std::string> arguments(argv, argv + argc);
    bool valid = AllArgumentsValid(arguments);
     if (valid == false){
       std::cout<< "error: invalid card\n";
+        return 1; 
     }
-    return 1;
-
-
+  PrintScore(HandScore(arguments));
   return 0;
 }
